@@ -1,0 +1,74 @@
+<!--
+        <div class="modal-header">
+            <h3>I'm a modal!</h3>
+        </div>
+-->
+<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel();">&times;</button>
+      </div>
+
+          <div class="modal-body">
+              <div class="container">
+                <div class="col-md-1"></div>
+                <div class="col-md-4 p-top-50">
+                    <div class="row border-bottom-4 m-bottom-30"></div>  
+                    <div class="row text-align-center">
+                       <p class=""> {{curItem.p_name | uppercase}}</p>
+                       <p class="font-30  p-bottom-50">{{curItem.p_price}}</p>
+                       <p class="">COLOR</p>
+                        <div class="text">
+                            <label ng-repeat="availableColorItem in curItem.p_available_options.colors"
+                                   style="background-color:{{availableColorItem.hexcode}}" class="color-box cusrsor-pointer"></label>                           
+                        </div>
+                    </div>
+                    <div class="row  text-align-center p-bottom-20">
+                        <div class="col-md-2"></div>  
+                        <div class="col-md-8">
+                        <span class="dropdown">
+                          <button class="btn custom-dropdown dropdown-toggle" type="button" data-toggle="dropdown">SIZE
+                          <span class="caret"></span></button>
+                          <ul class="dropdown-menu">
+                            <li ng-repeat="item in curItem.p_available_options.sizes"><a href="#">{{item.name | uppercase}}</a></li>
+                          </ul>
+                        </span>
+                        <span class="dropdown">
+                          <button class="btn custom-dropdown dropdown-toggle" type="button" data-toggle="dropdown">QTY
+                          <span class="caret"></span></button>
+                          <ul class="dropdown-menu">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                          </ul>
+                        </span>
+                        </div>
+                        <div class="col-md-2"></div>  
+                    </div>
+                    <div class="row p-bottom-10  text-align-center">
+                        <div class="col-md-3"></div>  
+                        <div class="col-md-6">                            
+                        <button class="btn custom-btn btn-primary" type="button">EDIT
+                          </button>
+                        </div>              
+                        <div class="col-md-3"></div>  
+                    </div>
+                    <div class="row text-align-center">
+                        <a>See product details</a>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                  <img class="img-responsive" src="images/T{{curItem.p_id}}.jpg">
+                </div>
+
+              </div>
+              
+<!--
+            <label>Email address:</label>
+            <input type="email" ng-model="user.email" />
+            <label>Password</label>
+            <input type="password" ng-model="user.password" />
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+              <input type="submit" class="btn primary-btn" value="Submit" />
+-->
+          </div>

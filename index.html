@@ -1,0 +1,107 @@
+<html ng-app="cartApp">
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" /> 
+<!--    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">-->
+        <link rel="stylesheet" href="/css/custom.css" /> 
+
+    </head>
+
+    <body class="container" ng-controller="cartController">
+      <div class="heading font-30">  <label>YOUR SHOPPING BAG</label></div>
+    <div class="">
+        <div class="row hidden-sm cart-list m-bottom-10">
+            <div class="col-sm-8">Items</div>
+            <div class="col-sm-1 text-align-right">Size</div>
+            <div class="col-sm-1 text-align-right">Qty</div>
+            <div class="col-sm-1 text-align-right">Price</div>
+        </div>    
+        <div class="row cart-product p-top-20 p-bottom-10 m-bottom-30 {{$last ? 'border-bottom-4' : 'border-bottom'}}" ng-repeat="cartItem in CartList">
+            <div class="col-xs-3 col-md-2">
+                   <img src="images/T{{cartItem.p_id}}.jpg"> 
+            </div>
+            <div class="col-xs-9 col-md-10">
+               <div class="row">
+                <div class="col-xs-12 col-md-8">
+                    <span class="item-description">
+                        <p>{{cartItem.p_variation | uppercase}} {{cartItem.p_name | uppercase}}</p>
+                        <p>Style #: {{cartItem.p_style | uppercase}}</p>
+                        <p>Colour: {{cartItem.p_selected_color.name | capitalize}}</p>
+                    </span>   
+                </div>
+                <div class="col-xs-12 col-md-1">{{cartItem.p_selected_size.code | uppercase}}</div>
+                    <div class="col-xs-12 col-md-1"><input class="width-50" ng-model="cartItem.p_quantity" /></div>
+                    <div class="col-xs-12 col-md-2">
+                      <p ng-if="cartItem.p_originalprice>cartItem.p_price" class="strike-line fade-color">  
+                          <span class="currency-img">{{cartItem.c_currency}}</span> 
+                          <span class="item-price">{{cartItem.p_originalprice| number:2}}</span>
+                    </p>
+                    <p>
+                        <span class="currency-img">{{cartItem.c_currency}}</span>  
+                        <span class="item-price">{{cartItem.p_price | number:2}}</span>
+                   </p>
+                   </div>
+                    </div>
+            </div>
+             <div class="col-xs-12 col-md-7">
+                    
+                        <a ng-click="EditItem(cartItem);">EDIT</a> | 
+                        <a ng-click="RemoveCartItem(cartItem);">REMOVE</a> |
+                        <a>SAVE</a>
+            </div>
+        </div>  
+        <div class="row">
+            <div class="col-md-5  hidden-sm">
+                <p class="p-bottom-10">Need help or have any questions?</p>
+                <p  class="p-bottom-10">Call Customer Service at 1-8000-0000</p>
+                <p  class="p-bottom-10">Chat with out representative</p>
+                <p  class="p-bottom-10">See return and extance policy</p>
+            </div>
+            <div class="col-md-7">
+                <div class="row p-bottom-10 m-bottom-20 border-bottom-4">
+                    <div class="col-md-6">
+                        ENTER PROMOTION CODE OR GIFT CODE 
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" />
+                        <button>APPLY</button>
+                    </div>
+                </div>
+                <div class="row p-bottom-30">
+                    <label class="pull-left">SUBTOTAL</label>
+                    <label class="pull-right">{{SubTotal | number:2}}</label>
+                </div>
+                <div class="row p-bottom-30">
+                    <label class="pull-left">PROMOTION CODE JF10 APPLIED</label>
+                    <label class="pull-right">{{DiscountAmount | number:2}}</label>
+                </div>
+                <div class="row p-bottom-30 border-bottom-1 m-bottom-20">
+                    <label class="pull-left">ESTIMATED SHIPPING</label>
+                    <label class="pull-right">FREE</label>
+                </div>
+                <div class="row p-bottom-30 border-bottom-4">
+                    <label class="pull-left">ESTIMATED TOTAL</label>
+                    <label class="pull-right">{{EstimatedSubTotal | number:2}}</label>
+                </div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-7">
+                        <a>CONTINUE SHOPPING</a>
+                        <button class="btn btn-primary">CHECKOUT</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>    
+    </body>
+        <script type="text/javascript" src="/dependencies/jquery.min.js"></script>
+    <script type="text/javascript" src="/dependencies/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/dependencies/angular.min.js"></script>
+
+        <script type="text/javascript" src="/dependencies/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="/dependencies/angular-route.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+         <script type="text/javascript" src="filters/filters.js"></script>
+    <script type="text/javascript" src="service/cartService.js"></script>
+    <script type="text/javascript" src="controller/cartController.js"></script>
+</html>
